@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="This Week in tbrpggepp #7" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C." />
-<meta property="og:description" content="Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C." />
+<meta name="description" content="Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C." />
+<meta property="og:description" content="Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C." />
 <link rel="canonical" href="http://localhost:4000/2020/02/21/n7.html" />
 <meta property="og:url" content="http://localhost:4000/2020/02/21/n7.html" />
 <meta property="og:site_name" content="tbrpggepp Development Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-02-21T00:00:00+11:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/02/21/n7.html"},"datePublished":"2020-02-21T00:00:00+11:00","headline":"This Week in tbrpggepp #7","dateModified":"2020-02-21T00:00:00+11:00","description":"Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C.","url":"http://localhost:4000/2020/02/21/n7.html","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/02/21/n7.html"},"datePublished":"2020-02-21T00:00:00+11:00","headline":"This Week in tbrpggepp #7","dateModified":"2020-02-21T00:00:00+11:00","description":"Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C.","url":"http://localhost:4000/2020/02/21/n7.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="tbrpggepp Development Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -46,23 +46,26 @@
 
   <div class="post-content e-content" itemprop="articleBody">
     <h2 id="progress">Progress:</h2>
-<p>Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C.</p>
+<p>Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C.</p>
 
 <h2 id="problems">Problems</h2>
-<p>This was the first moderately-sized program I’ve ever written in C, so it was initially exceedingly difficult to figure out how to read standard input and append values to variable-length arrays and such. I found a solution to the latter problem from Klas Lindback on Stack Overflow and I figured out how to read stdin with <code class="language-plaintext highlighter-rouge">fgets()</code>.</p>
+<p>This was the first moderately-sized program I’ve ever written in C, so it was initially exceedingly difficult to figure out how to do things like read standard input and append values to variable-length arrays. I found a solution to the latter problem from Klas Lindback on Stack Overflow and by consulting documentation and online sources figured out how to read stdin with <code class="language-plaintext highlighter-rouge">fgets()</code>.</p>
 
-<p>I had a big problem with <code class="language-plaintext highlighter-rouge">sizeOf(array)</code> when array is passed as a pointer variable to a subroutine, since the <code class="language-plaintext highlighter-rouge">sizeOf()</code>function just returned the size of the pointer itself rather than the actual array it points to the beginning of. This was resolved by defining ARRAY_SIZE as a constant in the program and not needing to calculate the size of the array in the first place.</p>
+<p>I had a big problem with the <code class="language-plaintext highlighter-rouge">sizeOf()</code> function when used to determine the size of an array that is passed as a pointer variable to a subroutine, since in that specific case the function just returned the size of the pointer itself rather than the actual array it points to the beginning of. This was resolved by defining ARRAY_SIZE as a constant in the program and circumventing the need to calculate the size of the array in the first place.</p>
 
-<p>Another issue was when I attempted to compare the string fed from stdin to predefined commands, this was easily solved by subtracting 1 from the compared string character indexes, since C appends 0 to every string as a null-terminator.</p>
+<p>Another issue was when I attempted to evaluate equivalency between a very large string read from stdin to smaller strings presented as ‘commands’. This was easily solved (after some time) by subtracting 1 from the compared string upper character index, since C appends 0 to every string as a null-terminator.</p>
 
-<h2 id="learning">Learning</h2>
+<h1 id="learning">Learning</h1>
+
+<p>Aside from the writing in C, the rest of the theory work for this week largely consisted of revision. We encountered the concepts of algorithmic time complexity, linear search, and binary search in class, all of which I was previously familiar with.</p>
 
 <h2 id="help">Help</h2>
 
-<h2 id="refinements">Refinements</h2>
+<p>Copied a C function from an answer made by Klas Lindback on Stack Overflow that can be used to ‘append’ a value to the end of an array up to a fixed length.</p>
 
 <h2 id="screenshots">Screenshots</h2>
-<p><img src="/assets/.png" alt="" /></p>
+<p><img src="/assets/search.png" alt="Linear and binary search code" />
+<img src="/assets/search_out.png" alt="Linear and binary search program in use" /></p>
 
   </div><a class="u-url" href="/2020/02/21/n7.html" hidden></a>
 </article>
