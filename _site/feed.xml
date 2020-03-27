@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-27T21:32:54+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tbrpggepp Development Blog</title><subtitle>Weekly development updates and ruminations on the &quot;Text-Based Role-Playing-Game Graphical Editor Plus Plus&quot;, or tbrpggepp for short.</subtitle><entry><title type="html">This Week in tbrpggepp #7</title><link href="http://localhost:4000/2020/02/21/n7.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #7" /><published>2020-02-21T00:00:00+11:00</published><updated>2020-02-21T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/21/n7</id><content type="html" xml:base="http://localhost:4000/2020/02/21/n7.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;This was the first moderately-sized program I’ve ever written in C, so it was initially exceedingly difficult to figure out how to read standard input and append values to variable-length arrays and such. I found a solution to the latter problem from Klas Lindback on Stack Overflow and I figured out how to read stdin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fgets()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I had a big problem with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sizeOf(array)&lt;/code&gt; when array is passed as a pointer variable to a subroutine, since the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sizeOf()&lt;/code&gt;function just returned the size of the pointer itself rather than the actual array it points to the beginning of. This was resolved by defining ARRAY_SIZE as a constant in the program and not needing to calculate the size of the array in the first place.&lt;/p&gt;
+
+&lt;p&gt;Another issue was when I attempted to compare the string fed from stdin to predefined commands, this was easily solved by subtracting 1 from the compared string character indexes, since C appends 0 to every string as a null-terminator.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+
+&lt;h2 id=&quot;help&quot;&gt;Help&lt;/h2&gt;
+
+&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in C.</summary></entry><entry><title type="html">This Week in tbrpggepp #6</title><link href="http://localhost:4000/2020/02/14/n6.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #6" /><published>2020-02-14T00:00:00+11:00</published><updated>2020-02-14T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/14/n6</id><content type="html" xml:base="http://localhost:4000/2020/02/14/n6.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week I worked on further system modelling, including the structure chart and system flowchart.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;I didn’t manage to finish the structure chart this week, the parameters were left incomplete. I’m not sure how to complete the system flowchart while representing the loop of event-driven user choice branching the main form.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I worked on system modelling HSC exam questions during class for revision and to refine my understanding. I learnt a bit about execution stacks in lower level system programming, since structure charts seem to be a kind of visualisation of an execution stack over time.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/early_flowchart.png&quot; alt=&quot;Early iteration of system flowchart&quot; /&gt;
+&lt;img src=&quot;/assets/early_struct.png&quot; alt=&quot;Early iteration of system structure chart&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I worked on further system modelling, including the structure chart and system flowchart.</summary></entry><entry><title type="html">This Week in tbrpggepp #5</title><link href="http://localhost:4000/2020/02/07/n5.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #5" /><published>2020-02-07T00:00:00+11:00</published><updated>2020-02-07T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/07/n5</id><content type="html" xml:base="http://localhost:4000/2020/02/07/n5.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week I revised and worked on system modelling including context diagrams and the data flow diagram for the desktop application.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;I didn’t encounter any issues this week, it was pretty smooth sailing.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I revised in-class and and off the preliminary textbook the graphical system modelling tools like context diagrams and data flow diagrams, which seem like more simplistic versions of non-deterministic finite state automata. I was pleased to find out Dia ran natively on my GNU/Linux machine, and was even more pleased to find out that Dia itself is a part of the GNU project! It turns out Dia is Free Software (in the sense of freedom, not price) and is licensed under version 3 or later of the GPL.&lt;/p&gt;
+
+&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
+&lt;p&gt;While working out the system modelling tools I decided the application should have a definitive ‘save’ feature which would do more than write a JSON file to disk. This could be a commit to a local git repository but I’m undecided. I have also decided to integrate the game-playing command line application with the game-designing desktop application, which will run in another form. These are all shown as processes in the data flow diagram.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/context.png&quot; alt=&quot;Context Diagram&quot; /&gt;
+&lt;img src=&quot;/assets/dfd.png&quot; alt=&quot;DFD Diagram&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I revised and worked on system modelling including context diagrams and the data flow diagram for the desktop application.</summary></entry><entry><title type="html">This Week in tbrpggepp #4</title><link href="http://localhost:4000/2020/01/31/n4.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #4" /><published>2020-01-31T00:00:00+11:00</published><updated>2020-01-31T00:00:00+11:00</updated><id>http://localhost:4000/2020/01/31/n4</id><content type="html" xml:base="http://localhost:4000/2020/01/31/n4.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;Similarly to the last update, this week was on the border of a term and having school start on a Wednesday means relatively little progress was made. The progress I did make was a rough start on the IPO chart.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;It’s somewhat difficult to make an IPO chart for an application you haven’t developed yet, but I’ve attempted to imagine the inputs the user would make and how the application would respond in the general sense. I feel that I won’t know exactly what the inputs and processes are until I’ve completed developing the application, however I’m going to have to work through this as the documentation is due before the code.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;Over the holidays I came across a great source of programming/IT PDFs and ebooks, so this week I’ve been reading through “Rapid GUI Programming with Python and Qt” by Mark Summerfield this week. At the start of the project I wasn’t aware of PyQt, a Python 2/3 binding of Qt that would allow me to develop the application without having to learn C++, only costing a minor hit to performance. I know that one of my favourite desktop applications, Qutebrowser, is written in PyQt.&lt;/p&gt;
+
+&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
+&lt;p&gt;I might decide to implement the project with Python3 and PyQt rather than C++ and bare Qt.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/ipo.png&quot; alt=&quot;IPO chart mockup&quot; /&gt;
+&lt;img src=&quot;/assets/pyqt_book.png&quot; alt=&quot;A Page from the PyQt Programming Book&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Similarly to the last update, this week was on the border of a term and having school start on a Wednesday means relatively little progress was made. The progress I did make was a rough start on the IPO chart.</summary></entry><entry><title type="html">This Week in tbrpggepp #3</title><link href="http://localhost:4000/2019/11/29/n3.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #3" /><published>2019-11-29T00:00:00+11:00</published><updated>2019-11-29T00:00:00+11:00</updated><id>http://localhost:4000/2019/11/29/n3</id><content type="html" xml:base="http://localhost:4000/2019/11/29/n3.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week I’ve been working on the Social and Ethical Issues section and its overview, following the task document and its specification for discussing intellectual property, quality, inclusivity, privacy, and ergonomics.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;It was difficult to write about some of the topics like inclusivity, privacy and ergonomics, since despite their being part of the NESA curriculumn they seem largely irrelevant to my project. Privacy would seem it be more relevant in reference to an application which has some form of a back-end database that registers and stores data from users; while inclusivity and ergonomics seem somewhat alien concepts to me in regards to developing software. This makes sense though, since desktop applications are meant to be designed for ‘user friendliness’.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I’ve been doing some reading on the concepts behind social and ethical issues in software development this week. I found &lt;a href=&quot;https://www.gnu.org/philosophy/not-ipr.html&quot;&gt;this document&lt;/a&gt; particularly helpful interesting, as it certainly posits a radical stance compared to most modern opinions about intellectual property today. The stance taken by the author does seem to hold some validity, however I don’t believe NESA would give me marks if I were to put forth the author’s opinion in the Social and Ethical Issues component of the SDD exam.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/social_overview.png&quot; alt=&quot;Social and Ethical Issues Overview screenshot&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I’ve been working on the Social and Ethical Issues section and its overview, following the task document and its specification for discussing intellectual property, quality, inclusivity, privacy, and ergonomics.</summary></entry><entry><title type="html">This Week in tbrpggepp #2</title><link href="http://localhost:4000/2019/11/15/n2.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #2" /><published>2019-11-15T00:00:00+11:00</published><updated>2019-11-15T00:00:00+11:00</updated><id>http://localhost:4000/2019/11/15/n2</id><content type="html" xml:base="http://localhost:4000/2019/11/15/n2.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;Progress was made in the Defining and Understanding the Problem sections, with work largely done on the Problem Statement and the Overview of Hardware and Software sections. This required work on expanding and refining ideas for the Major Project.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;I found it difficult to formally document the requirements of the project in written language as well as fulfill the requirements of the section. I also had to make decisions about what hardware and software to use in the project, including the specific disregard of school-owned Windows computers. I’ve worked out that I’m going to write the project with the aid the cross-platform Qt desktop framework, possibly writing the entire project in Qt’s primarily supported language C++. This will allow me to develop the project on my GNU/Linux laptop while marking can be done on a Windows machine.&lt;/p&gt;
+
+&lt;p&gt;I’ve also decided I’m going to use Git as version control for my major project and host the code remotely on Gitlab - this will allow the marker to view the source code easily as well. Although Qt has its own specifically focused IDE I’ve decided to use a bare text editing environment and deal with any complexity as it arises.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I’ve looked a bit at the documentation of the Qt desktop application framework and some basic tutorials on how to develop within it. While the framework uses C++ to build applications, structure and styling can also be done with HTML and CSS which I’m moderately familiar with. The framework also applies a system of widgets and forms much like Microsoft’s .NET . I’ve additionally had a brief look at C++ concepts and syntax, which seems somewhat learnable since I’m familiar with its base language C.&lt;/p&gt;
+
+&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
+&lt;p&gt;I’ve worked out the requirments of the project in somewhat more detail - it will be a form-based application much like the vb.NET projects worked on during the preliminary course. The most difficulty will be in generating the graphical overview of the game-world map in the application’s main form, as of right now I’m not sure how to accomplish this.&lt;/p&gt;
+
+&lt;p&gt;##Screenshots
+&lt;img src=&quot;/assets/problemstatement_n_overview.png&quot; alt=&quot;Progress in Defining and Understanding the Problem&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Progress was made in the Defining and Understanding the Problem sections, with work largely done on the Problem Statement and the Overview of Hardware and Software sections. This required work on expanding and refining ideas for the Major Project.</summary></entry><entry><title type="html">This Week in tbrpggepp #1</title><link href="http://localhost:4000/2019/11/01/n1.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #1" /><published>2019-11-01T00:00:00+11:00</published><updated>2019-11-01T00:00:00+11:00</updated><id>http://localhost:4000/2019/11/01/n1</id><content type="html" xml:base="http://localhost:4000/2019/11/01/n1.html">&lt;h2 id=&quot;progress&quot;&gt;Progress&lt;/h2&gt;
+&lt;p&gt;Progress so far has consisted of initial setup of the project, including creation of scaffold for the project portfolio, creation of initial gantt chart and formation of project ideas.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;I had to locate and incorporate a suitable title page for my portfolio being typeset in LaTex, eventually finding the “Vertical Line Title Page” template from www.latextemplates.com&lt;/p&gt;
+
+&lt;p&gt;I used the LibreOffice suite to create my gantt chart due to my operating system’s inability to natively run Microsoft Excel.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;Learned a few new LaTeX commands from looking at the portfolio document template and title page, like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\raggedlength&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\textwidth&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshotsevidence&quot;&gt;Screenshots/Evidence&lt;/h2&gt;
+&lt;p&gt;Snippet from LaTeX title page document:
+&lt;img src=&quot;/assets/portfolio_title_page.png&quot; alt=&quot;title page screenshot&quot; /&gt;
+&lt;img src=&quot;/assets/portfolio_table_of_contents.png&quot; alt=&quot;table of contents page screenshot&quot; /&gt;
+&lt;img src=&quot;/assets/gantt_chart_0.png&quot; alt=&quot;Initial Gantt Chart&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress Progress so far has consisted of initial setup of the project, including creation of scaffold for the project portfolio, creation of initial gantt chart and formation of project ideas.</summary></entry></feed>
