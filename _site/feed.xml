@@ -1,30 +1,278 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-31T05:24:06+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tbrpggepp Development Blog</title><subtitle>Weekly development updates and ruminations on the &quot;Text-Based Role-Playing-Game Graphical Editor Plus Plus&quot;, or tbrpggepp for short.</subtitle><entry><title type="html">This Week in tbrpggepp #13</title><link href="http://localhost:4000/2020/05/15/n13.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #13" /><published>2020-05-15T00:00:00+10:00</published><updated>2020-05-15T00:00:00+10:00</updated><id>http://localhost:4000/2020/05/15/n13</id><content type="html" xml:base="http://localhost:4000/2020/05/15/n13.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;Since returning to school a week ago from the throes of isolation I have been solely and ardently studying the PyQt5 cross-platform Desktop framework. This hurried fervour was acquired after I returned to school and achieved an acutely painful realization: namely, that I had absolutely no clue how to create a desktop application outside of Visual Basic.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-31T10:02:10+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">tbrpggepp Development Blog</title><subtitle>Weekly development updates and ruminations on the &quot;Text-Based Role-Playing-Game Graphical Editor Plus Plus&quot;, or tbrpggepp for short.</subtitle><entry><title type="html">This Week in tbrpggepp #20</title><link href="http://localhost:4000/2020/07/31/n19.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #20" /><published>2020-07-31T00:00:00+10:00</published><updated>2020-07-31T00:00:00+10:00</updated><id>http://localhost:4000/2020/07/31/n19</id><content type="html" xml:base="http://localhost:4000/2020/07/31/n19.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
 
-&lt;p&gt;In the last week I’ve created three small desktop programs that make good use of the principles of PyQt5 (connections, layouts, slots), which I learnt how to create from an ebook on PyQt5 (https://gumroad.com/l/pysqtsamples).&lt;/p&gt;
+&lt;p&gt;During the past week I have made the following progress:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Finished dia diagrams and psuedocode.&lt;/li&gt;
+  &lt;li&gt;Wrote user manual pdf with LaTeX&lt;/li&gt;
+  &lt;li&gt;Added online input to forms, had to split manual with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;standalone&lt;/code&gt; latex module so each form could have an individual .tex file and pdf which are then compiled into the main user manual&lt;/li&gt;
+  &lt;li&gt;Completed “Testing and Maintaining the Solution” section&lt;/li&gt;
+  &lt;li&gt;Checked through blogs and made corrections where necessary.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+
+&lt;p&gt;Resolved issue of being unable to create new terminal for game on windows by using “start /wait” command (from “https://stackoverflow.com/a/11615580”)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tested this successfully on school computer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Encountered issue of program only being able to be ran in tbrpggepp directory due to usage of relative paths in program.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Resolved by pre-appending every use of a relative path with “os.path.normcase(os.path.dirname(os.path.realpath(&lt;strong&gt;file&lt;/strong&gt;)))” which returns the directory of the file being ran in normal case (ie. forward slashes rather than backslashes, identical between Linux and Windows)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Found an issue where the bubbleSort returns None if given an empty dict form, crashing the program&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Resolved by adding an if statement in bubblesort that automatically returns and empty list if given one&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Also could’ve been solved by adding a “return iterable” at the very end of the method after the main loop but that would have been less clear of a solution&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Found an issue where an if statement catching if the user was at the origin at editMovesTile (so the combobox could remove negative coord deltas) didn’t work&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Figured out that checking if the user was at the origin via the coords tile_dict value was shoddy, since if a new tile was being created the coords list was empty.&lt;/li&gt;
+  &lt;li&gt;Resolved by changing the method of determing if the user was at the origin in editTileForm by grabbing the values from the coord value user input fields and passing the results of that to editMovesForm instead.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Resolved mutltiple minor bugs including the editItem form opening with quantity=0 even if it was 1, this was because I set the default value to be 1 in the init form and if it was one it would skip the statement setting the input field to the passed quantity. Resolved by setting the default value to 0.&lt;/p&gt;
+
+&lt;h2 id=&quot;design-requirements&quot;&gt;Design Requirements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added tutorial.json game-world file to project directory, as an example for the user to edit off of.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I learnt about all the dirname, realpath, normcase methods for the os.path library and the method of spawning new terminals in windows.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;Stack Overflow Answer:
+&lt;img src=&quot;/assets/SOanswer.png&quot; alt=&quot;SO Answer&quot; /&gt;
+&lt;img src=&quot;/assets/manual.png&quot; alt=&quot;manual&quot; /&gt;
+&lt;img src=&quot;/assets/online_help.png&quot; alt=&quot;onlinehelp&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress:</summary></entry><entry><title type="html">This Week in tbrpggepp #19</title><link href="http://localhost:4000/2020/07/24/n19.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #19" /><published>2020-07-24T00:00:00+10:00</published><updated>2020-07-24T00:00:00+10:00</updated><id>http://localhost:4000/2020/07/24/n19</id><content type="html" xml:base="http://localhost:4000/2020/07/24/n19.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;The progress made this week consisted of the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added docstrings to every function in the program and proper comments, while I still remember how everything works!&lt;/li&gt;
+  &lt;li&gt;Added bubbleSort algorithmn to lstMovesValue in mainMenuForm, sorts moves alphabetically by their labels.&lt;/li&gt;
+  &lt;li&gt;Started work on flowcharts and psuedocode in dia (did 4)&lt;/li&gt;
+  &lt;li&gt;Implemented btnPlayGame for linux using os.system and os.path.dirname
+An interesting tidbit is that the way i originally designed the text game is you pass to it the directory containing your world file rather than the file itself: this is useful because now it prevents the user from performing a shell injection attack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;Found an error wherein selecting an empty dmgtype in editEnemy or editItem would crash the program:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Resolved by adding an if statement to convert empty dmgtype enemy value to None, as it is represented in the json&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Found an error where the program would crash if one tries to save a tile onto it when no file has been selected/created:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Resolved by adding an error message if the user attempts to save a tile before opening/creating a world file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Found an unneccessary error message appearing when the user cancels the file dialog in introForm:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Resolved by adding to the if clauses in the intro form so the user doesn’t get an error message if they don’t select a file (ie. cancelled the file dialog)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Found issue whereby tblWorldMap and game_world wouldn’t reset and reload after opening a new form from a preexisting one.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Resolved by adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self.game\_world = {}&lt;/code&gt; in actionOpenNewFile subroutine and loadWorldFile() in introForm.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Slightly modified Text_Game to fix how it iterates possible questlines: now skips directories in scandir and checks to be a json file.&lt;/li&gt;
+  &lt;li&gt;Was unable to implement btnPlayGame for Windows despite fixing one issue: I assumed os.path would use the different directory slash separator. Now I need to figure out how to open new windows terminals with os.system().&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;design-refinements&quot;&gt;Design Refinements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Decided to limit scope of the project to disinclude git integration, since the user can simply do this this manually in a terminal if they wish. Not to mention they’d probably find that way easier.&lt;/li&gt;
+  &lt;li&gt;Removed frivolous search bar from mainMenu that had not been given any functionality.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Learnt about cross-platform methods of executing commands across Linux and Windows, with the subprocess library and the os library.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/docstringsW12.png&quot; alt=&quot;docstrings&quot; /&gt;
+&lt;img src=&quot;/assets/bubbleSortW12.png&quot; alt=&quot;bubble&quot; /&gt;
+&lt;a href=&quot;/assets/editTileFormDia.png&quot;&gt;dia&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: The progress made this week consisted of the following: Added docstrings to every function in the program and proper comments, while I still remember how everything works! Added bubbleSort algorithmn to lstMovesValue in mainMenuForm, sorts moves alphabetically by their labels. Started work on flowcharts and psuedocode in dia (did 4) Implemented btnPlayGame for linux using os.system and os.path.dirname An interesting tidbit is that the way i originally designed the text game is you pass to it the directory containing your world file rather than the file itself: this is useful because now it prevents the user from performing a shell injection attack</summary></entry><entry><title type="html">This Week in tbrpggepp #18</title><link href="http://localhost:4000/2020/07/17/n18.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #18" /><published>2020-07-17T00:00:00+10:00</published><updated>2020-07-17T00:00:00+10:00</updated><id>http://localhost:4000/2020/07/17/n18</id><content type="html" xml:base="http://localhost:4000/2020/07/17/n18.html">&lt;h2 id=&quot;progress&quot;&gt;Progress&lt;/h2&gt;
+
+&lt;p&gt;Throughout the holidays, I made the following progress:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added call to delChildForms subroutine to cancel button on editTile form&lt;/li&gt;
+  &lt;li&gt;Essentially completed building of UI files&lt;/li&gt;
+  &lt;li&gt;Made table font bold for easier reading&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Completed feature of loading data into program and input fields.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Implemented code in editMoves form&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Created “propogateChange()” method in tile edit form such that changes made in the child forms can be “propogated” back to the parent and eventually to the main form&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Refactored saving sustem for tiles. Instead of each child form independently editing the wider game_world the child forms instead complete their respective components of the dictionary and send it back to the tile editing form. The tile editing form then compiles these changes and edits them into its copy of the game_world, then calls the mainMenu form to assimilate this game_world and write it to disk.&lt;/li&gt;
+  &lt;li&gt;Refactored further such that the editTile form only edits the value of the individual tile entry and sends that back to an updateTile() method in the main menu&lt;/li&gt;
+  &lt;li&gt;Added file saving and creation of new files in introForm&lt;/li&gt;
+  &lt;li&gt;Changed tileClicked method such that coords showed up even when clicking on empty tiles and the coords appeared in the editTile form&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this state the program is perfectly usable with manual use of git and the text game. Next step is to integrate the two into the application.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;The problems and solutions I encountered during the holidays are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Encountered numerous issues in implementing such as info labels not updating due to forgetting you had to use setText() method, many other trivial issues&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Issue with opening edit tile form and passing tile object to class constructor, interpreter says passing too many arguments&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Issue resolved after much time by realizing I was accidently editing the item edit form, not the tile edit form.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Encountered an issue where changes would persist in the overall game world even if forms had the cancel (instead of the ‘save’) button clicked. Realized this was because of how Python handles references and the creation of new variables assigned preexisting variable values. Resolved by going into the init subroutine of each child form and replacing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self.game_world = game_world&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self.game_world = copy.deepcopy(game_world)&lt;/code&gt; which resolved the issue completely.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Issue saving tiles, change not appearing on world map&lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Added a loop to remove tiles which overlap coordinates xor names with new ones, since tile names are used as keyID’s instead of coordinates (dumb mistake I made 2 years ago)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;em&gt;May&lt;/em&gt; have just been forgetting to update tile_name with data from the object.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Fixed an issue where tiles would still appear at their old coordinates by adding a clear() method to the start of the loadWorldFile() routine.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Encountered an issue whereby even when cancelling the moves edit form or deleting a tile and reopening it, the moves_dict still persists in memory&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This was resolved by using deepcopys of sub-dicts for child forms, since Python is screwy in that what it calls variables are actually just funky pointers.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;As thought, resuing a tile name completely deletes the initial tile. Added an error message in mainForm that also renames the new tile to a temporary random string for the user to manually rename (IF the coordinates between the two tiles differ)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;design-refinements&quot;&gt;Design Refinements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Added delete tile button to mainMenu form&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Had to relearn methods for json library in python, haven’t used since last year. json.dumps() and json.loads() and file access pointers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Learnt how to manipulate tables in pyqt5 for world-map-loading&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/0W11.png&quot; alt=&quot;cancel_form_delchild&quot; /&gt;
+&lt;img src=&quot;/assets/refactorW11.png&quot; alt=&quot;refactoring saving system&quot; /&gt;
+&lt;img src=&quot;/assets/moreW11.png&quot; alt=&quot;more refactoring saving system&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress</summary></entry><entry><title type="html">This Week in tbrpggepp #17</title><link href="http://localhost:4000/2020/06/19/n17.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #17" /><published>2020-06-19T00:00:00+10:00</published><updated>2020-06-19T00:00:00+10:00</updated><id>http://localhost:4000/2020/06/19/n17</id><content type="html" xml:base="http://localhost:4000/2020/06/19/n17.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week I created UI files for editEnemy, editItem, and editMoves forms. I updated UI files for editTile, introForm and mainMenu. I also added to sidebar in the mainMenu a listbox for displaying moves. I also started adding logic to determine whether to open item or enemy form depending on the tile type value in editMovesForm’s combobox, including greying out the add element button before combobox item is selected.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;Essentially, I’ve resolved last week’s isssue of having different editTile forms for different room types by making “Edit Tile” only open &lt;strong&gt;one&lt;/strong&gt; type of form (editTileForm), which then has a greyed-out “Edit Element” button that changes its function depending on what tile type the user has selected in the combobox. Additionally, I also wasn’t sure how to incorporate the moves dict property into the Edit Tiles form as I had originally anticipated, since the relevant input fields and controls would be too large overall to fit on the editTile form; so I created another form (editMovesForm) and a button to open it in editTileForm.&lt;/p&gt;
+
+&lt;h2 id=&quot;design-refinements&quot;&gt;Design Refinements&lt;/h2&gt;
+&lt;p&gt;I created a seperate form for editing a tile’s move dict (editMoveForm) since the relevant fields would not fit on the editTileForm.&lt;/p&gt;
+
+&lt;p&gt;I also created seperate forms for editing a tile’s enemy or item.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/editTileFormW8.png&quot; alt=&quot;Edit Tile Form Week 8&quot; /&gt;
+&lt;img src=&quot;/assets/editMovesFormW8.png&quot; alt=&quot;Edit Moves Form Week 8&quot; /&gt;
+&lt;img src=&quot;/assets/editItemFormW8.png&quot; alt=&quot;Edit Item Form Week 8&quot; /&gt;
+&lt;img src=&quot;/assets/editEnemyFormW8.png&quot; alt=&quot;Edit Enemy Form Week 8&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I created UI files for editEnemy, editItem, and editMoves forms. I updated UI files for editTile, introForm and mainMenu. I also added to sidebar in the mainMenu a listbox for displaying moves. I also started adding logic to determine whether to open item or enemy form depending on the tile type value in editMovesForm’s combobox, including greying out the add element button before combobox item is selected.</summary></entry><entry><title type="html">This Week in tbrpggepp #16</title><link href="http://localhost:4000/2020/06/12/n16.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #16" /><published>2020-06-12T00:00:00+10:00</published><updated>2020-06-12T00:00:00+10:00</updated><id>http://localhost:4000/2020/06/12/n16</id><content type="html" xml:base="http://localhost:4000/2020/06/12/n16.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week I completed (what a I thought was) the construction of and the naming of all the elements in all the forms for the project. I also managed to disabled editing on the game-world grid by removing edit its edit triggers as well. Additionally, I reorganized the folders and layout of the project directory to a more readable alternative, with a UI_Layouts directory for all the UI files.`&lt;/p&gt;
+
+&lt;p&gt;I also added multi-form functionality to the program by performing ‘import’ on form classes, then assigning them to within the parent form objects and using show() method.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;Fixed issue of non-adjusting-size widgets by reassigning all sub-widgets to the central widget with defined layout, adding margins as needed.&lt;/p&gt;
+
+&lt;h2 id=&quot;design-refinements&quot;&gt;Design Refinements&lt;/h2&gt;
+&lt;p&gt;I realized that since each room type has significantly varying parameters, I’ll have to construct a different editTile form for each room type and have the user select the room type for new rooms from the main menu. As a consequence of this I will have to add a “create room” button.&lt;/p&gt;
+
+&lt;p&gt;However, I could have the “edit tile” button change text to create room if the highlighted tile isn’t created in the game world yet.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/editTileFormW7.png&quot; alt=&quot;Edit Tile Form Week 7&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I completed (what a I thought was) the construction of and the naming of all the elements in all the forms for the project. I also managed to disabled editing on the game-world grid by removing edit its edit triggers as well. Additionally, I reorganized the folders and layout of the project directory to a more readable alternative, with a UI_Layouts directory for all the UI files.`</summary></entry><entry><title type="html">This Week in tbrpggepp #15</title><link href="http://localhost:4000/2020/06/05/n15.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #15" /><published>2020-06-05T00:00:00+10:00</published><updated>2020-06-05T00:00:00+10:00</updated><id>http://localhost:4000/2020/06/05/n15</id><content type="html" xml:base="http://localhost:4000/2020/06/05/n15.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;This week, I significantly built up the UI for mainMenu and introForm. I landed on a 1280x720 layout as a good middle ground for desktop applications, as the widgets weren’t made to appear too small.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;I had lots of trouble using qtcreator, especially when setting layouts. For example, for some reason one form’s central widget was somehow permanently set to a vertical layout while an otherwise identical form wasn’t. This eventually was resolved by using the ‘break layout’ button&lt;/p&gt;
+
+&lt;p&gt;I had an issue with creating the game-world grid table within ‘scrollarea’ for the main form, where the scroll bars were not appearing. This was resolved by deleting ‘scrollarea’ and enabling scroll bars on the individual table widget.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;Learnt a method of opening file dialogs for PyQt5 from http://zetcode.com/gui/pyqt5/dialogs/ , used in introForm to create the “open file” dialog.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/mainMenuFormW6.png&quot; alt=&quot;Main Form Week 6&quot; /&gt;
+&lt;img src=&quot;/assets/introFormW6.png&quot; alt=&quot;Intro Form Week 6&quot; /&gt;
+&lt;img src=&quot;/assets/introFormCodeW6.png&quot; alt=&quot;Intro Form Code Week 6&quot; /&gt;
+Code borrowed from zetcode.com:
+&lt;img src=&quot;/assets/zetcode.png&quot; alt=&quot;zetcode&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week, I significantly built up the UI for mainMenu and introForm. I landed on a 1280x720 layout as a good middle ground for desktop applications, as the widgets weren’t made to appear too small.</summary></entry><entry><title type="html">This Week in tbrpggepp #14</title><link href="http://localhost:4000/2020/05/29/n14.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #14" /><published>2020-05-29T00:00:00+10:00</published><updated>2020-05-29T00:00:00+10:00</updated><id>http://localhost:4000/2020/05/29/n14</id><content type="html" xml:base="http://localhost:4000/2020/05/29/n14.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;It begins! This week marked the beginning of my actual implementation of tbrpgepp. Overall I managed to figure out that I would need to use a graphical UI designer (qtcreator) to create the look of each form, and then import those UI files into the Python program to add functionality to them. So far, I have created a very basic introForm UI file and introForm Python program.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+&lt;p&gt;Earlier in the week, before I realized I would have to use the UI file import method, I was very conflicted as to whether the program swould &lt;em&gt;start&lt;/em&gt; either by opening the mainMenu form which would then open a file dialog to open/create the game-world file, or whether an introForm would be used instead. Eventually I settled on the introForm option.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
+&lt;p&gt;I very quickly learnt this week that manually adding UI elements and effectively modifying their layout would be an abysmally time-consuming process. I learnt about UI files from this resource: https://www.learnpyqt.com/courses/qt-creator/first-steps-qt-creator/ and determined that this was the far more efficient option.&lt;/p&gt;
+
+&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/mainFormW5.png&quot; alt=&quot;Main Form Week 5&quot; /&gt;
+You can inevitably see how painful it would be to add and arrange every component of the UI in code by hand.
+&lt;img src=&quot;/assets/W5.png&quot; alt=&quot;Intro Form with UI file Week 5&quot; /&gt;
+Much easier.&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: It begins! This week marked the beginning of my actual implementation of tbrpgepp. Overall I managed to figure out that I would need to use a graphical UI designer (qtcreator) to create the look of each form, and then import those UI files into the Python program to add functionality to them. So far, I have created a very basic introForm UI file and introForm Python program.</summary></entry><entry><title type="html">This Week in tbrpggepp #13</title><link href="http://localhost:4000/2020/05/22/n13.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #13" /><published>2020-05-22T00:00:00+10:00</published><updated>2020-05-22T00:00:00+10:00</updated><id>http://localhost:4000/2020/05/22/n13</id><content type="html" xml:base="http://localhost:4000/2020/05/22/n13.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;Since returning to school two week ago from the throes of isolation I have been solely and ardently studying the PyQt5 cross-platform Desktop framework. This hurried fervour was acquired after I returned to school and achieved an acutely painful realization: namely, that I had absolutely no clue how to create a desktop application outside of Visual Basic.&lt;/p&gt;
+
+&lt;p&gt;In the last two weeks I’ve created three small desktop programs that make good use of the principles of PyQt5 (connections, layouts, slots), which I learnt how to create from an ebook on PyQt5 (https://gumroad.com/l/pysqtsamples).&lt;/p&gt;
 
 &lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
 &lt;p&gt;True fans of tbrpggepp know that ever since 2019 I’ve had in my posession an ebook relating to PyQt: unfortunately, that book was for PyQt4 instead of PyQt5; this introduced numerous incongruent differences which I became acutely aware of after attempting to implement the examples in the book. For example, connections are handled in a particularly messy manner in PyQt4 which is made significantly more elegant in its predecessor. The names of classes are different between the two library versions, etc.&lt;/p&gt;
 
-&lt;h1 id=&quot;learning&quot;&gt;Learning&lt;/h1&gt;
+&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
 &lt;p&gt;In the last two weeks I’ve essentially learnt a desktop framework from scratch. I know how to create and execute forms, create functionality in UI elements, and link forms together in a program. I feel somewhat prepared for beginning to create the major project itself.&lt;/p&gt;
 
 &lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
 &lt;p&gt;My first three “real” desktop programs made by hand, in order:
 &lt;img src=&quot;/assets/alert.png&quot; alt=&quot;Alert&quot; /&gt;
 &lt;img src=&quot;/assets/calc.png&quot; alt=&quot;Calc&quot; /&gt;
-&lt;img src=&quot;/assets/currency_conv.png&quot; alt=&quot;Currency conv&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Since returning to school a week ago from the throes of isolation I have been solely and ardently studying the PyQt5 cross-platform Desktop framework. This hurried fervour was acquired after I returned to school and achieved an acutely painful realization: namely, that I had absolutely no clue how to create a desktop application outside of Visual Basic.</summary></entry><entry><title type="html">This Week in tbrpggepp #12</title><link href="http://localhost:4000/2020/05/08/n12.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #12" /><published>2020-05-08T00:00:00+10:00</published><updated>2020-05-08T00:00:00+10:00</updated><id>http://localhost:4000/2020/05/08/n12</id><content type="html" xml:base="http://localhost:4000/2020/05/08/n12.html">&lt;h2 id=&quot;covid-19-aka-the-dark-ages&quot;&gt;COVID-19: AKA The Dark Ages&lt;/h2&gt;
+&lt;img src=&quot;/assets/currency_conv.png&quot; alt=&quot;Currency conv&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Since returning to school two week ago from the throes of isolation I have been solely and ardently studying the PyQt5 cross-platform Desktop framework. This hurried fervour was acquired after I returned to school and achieved an acutely painful realization: namely, that I had absolutely no clue how to create a desktop application outside of Visual Basic.</summary></entry><entry><title type="html">This Week in tbrpggepp #12</title><link href="http://localhost:4000/2020/05/08/n12.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #12" /><published>2020-05-08T00:00:00+10:00</published><updated>2020-05-08T00:00:00+10:00</updated><id>http://localhost:4000/2020/05/08/n12</id><content type="html" xml:base="http://localhost:4000/2020/05/08/n12.html">&lt;h2 id=&quot;covid-19-aka-the-dark-ages&quot;&gt;COVID-19: AKA The Dark Ages&lt;/h2&gt;
 
 &lt;p&gt;From the end of the Major Project Designing and Planning submission to the end of Week 2 Term 2, we were all left in effective isolation with only the mere threat of a Major Project submission yet another term on the horizon to keep us at bay. Safe to say, not a lot of SDD work was conducted by me personally during this period, aside from the sporadic reading of my PyQt4 textbook. Instead of providing a Progress/Problems/Learning blog post for this period, I will instead insert the transcript of a mock interview between me, the Developer and Me, the client.&lt;/p&gt;
 
-&lt;p&gt;Developer: What are you looking for in this program and what is your motivation for commissioning it?
-Client: &lt;em&gt;Throughout the years I’ve created many text-based adventure games for work and leisure, yet every time I create a game I have to manually edit vast and clunky json files by hand. My hope for tbrpggepp is that it will make the creation of such games orders of magnitudes easier and more intuitive.&lt;/em&gt;
-Developer: What platform do you want us to release the program to?
-Client: &lt;em&gt;The program has to sufficiently cross-platform in nature such that it may be ran on both Linux and Windows. Mac OS would be a nice touch.&lt;/em&gt;
-Developer: How should we release the program?
-Client: &lt;em&gt;As a libre software product, the program should be distributed by publicly releasing the source code on a site such as GitHub&lt;/em&gt;
-Developer: Are you satisfied by the User Interface mockups we’ve created so far?
-Client: &lt;em&gt;They look so good, it’s as if I wrote them myself.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">COVID-19: AKA The Dark Ages</summary></entry><entry><title type="html">This Week in tbrpggepp #11</title><link href="http://localhost:4000/2020/03/27/n11.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #11" /><published>2020-03-27T00:00:00+11:00</published><updated>2020-03-27T00:00:00+11:00</updated><id>http://localhost:4000/2020/03/27/n11</id><content type="html" xml:base="http://localhost:4000/2020/03/27/n11.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
+&lt;p&gt;Developer: What are you looking for in this program and what is your motivation for commissioning it?&lt;/p&gt;
+
+&lt;p&gt;Client: &lt;em&gt;Throughout the years I’ve created many text-based adventure games for work and leisure, yet every time I create a game I have to manually edit vast and clunky json files by hand. My hope for tbrpggepp is that it will make the creation of such games orders of magnitudes easier and more intuitive.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Developer: What platform do you want us to release the program to?&lt;/p&gt;
+
+&lt;p&gt;Client: &lt;em&gt;The program has to sufficiently cross-platform in nature such that it may be ran on both Linux and Windows. Mac OS would be a nice touch.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Developer: How should we release the program?&lt;/p&gt;
+
+&lt;p&gt;Client: &lt;em&gt;As a libre software product, the program should be distributed by publicly releasing the source code on a site such as GitHub&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Developer: Are you satisfied by the User Interface mockups we’ve created so far?&lt;/p&gt;
+
+&lt;p&gt;Client: &lt;em&gt;They look so good, it’s as if I wrote them myself.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">COVID-19: AKA The Dark Ages</summary></entry><entry><title type="html">This Week in tbrpggepp #11</title><link href="http://localhost:4000/2020/03/27/n11.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #11" /><published>2020-03-27T00:00:00+11:00</published><updated>2020-03-27T00:00:00+11:00</updated><id>http://localhost:4000/2020/03/27/n11</id><content type="html" xml:base="http://localhost:4000/2020/03/27/n11.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
 &lt;p&gt;School shut down last week due to Covid-19 and didn’t begin online lessons until this week. I feel as if were I in any stage of my schooling life this would be a great joy, but the fact I’m doing my HSC this year leaves me with some quite mixed feelings. Nevertheless, this was the week of submission for the Planning and Designing component of the major task, and of course brought with it a mad rush. During the last two weeks I managed to:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Update my Context Diagram&lt;/li&gt;
@@ -47,101 +295,4 @@ Client: &lt;em&gt;They look so good, it’s as if I wrote them myself.&lt;/em&gt
 &lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/ui_combo.png&quot; alt=&quot;UI Combo&quot; /&gt;
 &lt;img src=&quot;/assets/dd_and_social.png&quot; alt=&quot;Data Dictionary and Social and Ethical Issues Changes&quot; /&gt;
-&lt;img src=&quot;/assets/githubio.png&quot; alt=&quot;Blog post site&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: School shut down last week due to Covid-19 and didn’t begin online lessons until this week. I feel as if were I in any stage of my schooling life this would be a great joy, but the fact I’m doing my HSC this year leaves me with some quite mixed feelings. Nevertheless, this was the week of submission for the Planning and Designing component of the major task, and of course brought with it a mad rush. During the last two weeks I managed to: Update my Context Diagram Update my Data Flow Diagram Expand significantly upon my Data Dictionary Create my UI design mockups and the Storyboard connecting them Expand significantly upon my IPO Chart Refined my problem statement Wrote the section on development approach Wrote the section on System Documentation justification Expand significantly upon my social and ethical issues discussion Manage to publish a few of my blogs.</summary></entry><entry><title type="html">This Week in tbrpggepp #10</title><link href="http://localhost:4000/2020/03/13/n10.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #10" /><published>2020-03-13T00:00:00+11:00</published><updated>2020-03-13T00:00:00+11:00</updated><id>http://localhost:4000/2020/03/13/n10</id><content type="html" xml:base="http://localhost:4000/2020/03/13/n10.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;During this week we covered the theory content of multidimensional arrays, which I suspect may be useful in the future implementation of my project which will prominently feature a large 2D grid. I started putting real progress towards my currently-undecided method of publishing blogs. Unfortunately I spend a fair chunk of the week at home due to illness, therefore little other progress was made.&lt;/p&gt;
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;One of the things I want to get away from most during this project is Blogger. Frankly, its interface was always a chore to use, especially the uploading of images; and I’ve long held the notion in my mind that I’ll eventually create a website on the open web. I’m looking at multiple options, such as self-hosting a site on my homeserver or using GitHub pages; but underlying this I believe I’ll use a static site generator like Jekyll or Hugo to generate html out of markdown files. I’ve made this decision because markdown is beautifully simple to format and edit, and using a big messy program like a static site generator sounds like a fair bit of fun.&lt;/p&gt;
-&lt;h1 id=&quot;learning&quot;&gt;Learning&lt;/h1&gt;
-&lt;p&gt;Learned about static-site generator systems for blog-website manufacturing, such as Jekyll or Hugo. Both are open-source and give large degrees of freedom regarding styles and customisation and look quite appealing compared to Google’s alternative.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;This is the format template I’m using for my markdown blog posts (including this one), which I currently all have saved to disk until I determine a hosting solution.
-&lt;img src=&quot;/assets/blogpost.png&quot; alt=&quot;Blog Post Markdown Format&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: During this week we covered the theory content of multidimensional arrays, which I suspect may be useful in the future implementation of my project which will prominently feature a large 2D grid. I started putting real progress towards my currently-undecided method of publishing blogs. Unfortunately I spend a fair chunk of the week at home due to illness, therefore little other progress was made. Problems One of the things I want to get away from most during this project is Blogger. Frankly, its interface was always a chore to use, especially the uploading of images; and I’ve long held the notion in my mind that I’ll eventually create a website on the open web. I’m looking at multiple options, such as self-hosting a site on my homeserver or using GitHub pages; but underlying this I believe I’ll use a static site generator like Jekyll or Hugo to generate html out of markdown files. I’ve made this decision because markdown is beautifully simple to format and edit, and using a big messy program like a static site generator sounds like a fair bit of fun. Learning Learned about static-site generator systems for blog-website manufacturing, such as Jekyll or Hugo. Both are open-source and give large degrees of freedom regarding styles and customisation and look quite appealing compared to Google’s alternative.</summary></entry><entry><title type="html">This Week in tbrpggepp #9</title><link href="http://localhost:4000/2020/03/06/n9.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #9" /><published>2020-03-06T00:00:00+11:00</published><updated>2020-03-06T00:00:00+11:00</updated><id>http://localhost:4000/2020/03/06/n9</id><content type="html" xml:base="http://localhost:4000/2020/03/06/n9.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;Yet another theory content based week: we largely spent the time reviewing string processing. I finished up my C sorting prac from last week and worked on my second Gantt chart, my structure chart, and my flowchart. I tweaked the text of the social and ethical issues justification section somewhat as well.&lt;/p&gt;
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;Resolved the dilemma of representing event-driven user action in the flowchart by consulting with my teacher, who told me that simply displaying the linear path of the flowchart with loops inserted is fine. I was quite proud of myself that I could present the option of clicking “Online Help” at any time in my structure chart by putting a choice symbol over the line without a second option - meaning the user can choose to use or not to use the Online Help at any time.&lt;/p&gt;
-&lt;h1 id=&quot;learning&quot;&gt;Learning&lt;/h1&gt;
-&lt;p&gt;Revision of string processing included common processes such as extracting, deleting, inserting, and concatenation. In C, strings are simply pure arrays that contain integers corresponding to characters: this simple fact reduces the complexity of the topic quite drasticaly.&lt;/p&gt;
-
-&lt;p&gt;Completing the sorting prac from last week in C from scratch aided in my understanding of the sorting algorithms quite effectively as well.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/sort2.png&quot; alt=&quot;Finished Sort C Prac Code&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assests/gantt_chart_1.png&quot; alt=&quot;Second Gantt Chart&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assests/strings.png&quot; alt=&quot;Strings Prac&quot; /&gt;
-The side-effect of spending so long working on your sorting prac is that it leaves very little time for your string processing prac.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assests/SystemFlowchart.png&quot; alt=&quot;Second Iteration Flowchart&quot; /&gt;
-&lt;img src=&quot;/assests/StructureChart.png&quot; alt=&quot;Second Iteration Structure Chart&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Yet another theory content based week: we largely spent the time reviewing string processing. I finished up my C sorting prac from last week and worked on my second Gantt chart, my structure chart, and my flowchart. I tweaked the text of the social and ethical issues justification section somewhat as well. Problems Resolved the dilemma of representing event-driven user action in the flowchart by consulting with my teacher, who told me that simply displaying the linear path of the flowchart with loops inserted is fine. I was quite proud of myself that I could present the option of clicking “Online Help” at any time in my structure chart by putting a choice symbol over the line without a second option - meaning the user can choose to use or not to use the Online Help at any time. Learning Revision of string processing included common processes such as extracting, deleting, inserting, and concatenation. In C, strings are simply pure arrays that contain integers corresponding to characters: this simple fact reduces the complexity of the topic quite drasticaly.</summary></entry><entry><title type="html">This Week in tbrpggepp #8</title><link href="http://localhost:4000/2020/02/28/n8.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #8" /><published>2020-02-28T00:00:00+11:00</published><updated>2020-02-28T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/28/n8</id><content type="html" xml:base="http://localhost:4000/2020/02/28/n8.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;This week we mostly covered theory content relating to insertion, bubble, and selection sorting. We performed multiple exam questions during class and I got working on my data dictionary. I got started on an implementation of the sorting algorithms in C.&lt;/p&gt;
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;Didn’t encounter many problems this week, as were were mostly conducting theory work. I found it quite difficult to remember exactly which name referred to which algorithm, though.&lt;/p&gt;
-&lt;h1 id=&quot;learning&quot;&gt;Learning&lt;/h1&gt;
-&lt;p&gt;The specifics of Insertion and Selection Sort were somewhat new to me, but it was entertaining to derive the time complexity for both of them by hand.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/sort.png&quot; alt=&quot;Sort C Prac Code&quot; /&gt;
-As one may say, I didn’t get so far in the specifics of the algorithm implementation this week.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/early_datadict.png&quot; alt=&quot;Data Dictionary&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week we mostly covered theory content relating to insertion, bubble, and selection sorting. We performed multiple exam questions during class and I got working on my data dictionary. I got started on an implementation of the sorting algorithms in C. Problems Didn’t encounter many problems this week, as were were mostly conducting theory work. I found it quite difficult to remember exactly which name referred to which algorithm, though. Learning The specifics of Insertion and Selection Sort were somewhat new to me, but it was entertaining to derive the time complexity for both of them by hand.</summary></entry><entry><title type="html">This Week in tbrpggepp #7</title><link href="http://localhost:4000/2020/02/21/n7.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #7" /><published>2020-02-21T00:00:00+11:00</published><updated>2020-02-21T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/21/n7</id><content type="html" xml:base="http://localhost:4000/2020/02/21/n7.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C.&lt;/p&gt;
-
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;This was the first moderately-sized program I’ve ever written in C, so it was initially exceedingly difficult to figure out how to do things like read standard input and append values to variable-length arrays. I found a solution to the latter problem from Klas Lindback on Stack Overflow and by consulting documentation and online sources figured out how to read stdin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fgets()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I had a big problem with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sizeOf()&lt;/code&gt; function when used to determine the size of an array that is passed as a pointer variable to a subroutine, since in that specific case the function just returned the size of the pointer itself rather than the actual array it points to the beginning of. This was resolved by defining ARRAY_SIZE as a constant in the program and circumventing the need to calculate the size of the array in the first place.&lt;/p&gt;
-
-&lt;p&gt;Another issue was when I attempted to evaluate equivalency between a very large string read from stdin to smaller strings presented as ‘commands’. This was easily solved (after some time) by subtracting 1 from the compared string upper character index, since C appends 0 to every string as a null-terminator.&lt;/p&gt;
-
-&lt;h1 id=&quot;learning&quot;&gt;Learning&lt;/h1&gt;
-
-&lt;p&gt;Aside from the writing in C, the rest of the theory work for this week largely consisted of revision. We encountered the concepts of algorithmic time complexity, linear search, and binary search in class, all of which I was previously familiar with.&lt;/p&gt;
-
-&lt;h2 id=&quot;help&quot;&gt;Help&lt;/h2&gt;
-
-&lt;p&gt;Copied a C function from an answer made by Klas Lindback on Stack Overflow that can be used to ‘append’ a value to the end of an array up to a fixed length.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/search.png&quot; alt=&quot;Linear and binary search code&quot; /&gt;
-&lt;img src=&quot;/assets/search_out.png&quot; alt=&quot;Linear and binary search program in use&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Progress this week largely consisted of theory work and little direct project development. I worked mostly on practical tasks involving 120 lines of searching algorithms written by hand in minimalistic C.</summary></entry><entry><title type="html">This Week in tbrpggepp #6</title><link href="http://localhost:4000/2020/02/14/n6.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #6" /><published>2020-02-14T00:00:00+11:00</published><updated>2020-02-14T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/14/n6</id><content type="html" xml:base="http://localhost:4000/2020/02/14/n6.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;This week I worked on further system modelling, including the structure chart and system flowchart.&lt;/p&gt;
-
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;I didn’t manage to finish the structure chart this week, the parameters were left incomplete. I’m not sure how to complete the system flowchart while representing the loop of event-driven user choice branching the main form.&lt;/p&gt;
-
-&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
-&lt;p&gt;I worked on system modelling HSC exam questions during class for revision and to refine my understanding. I learnt a bit about execution stacks in lower level system programming, since structure charts seem to be a kind of visualisation of an execution stack over time.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/early_flowchart.png&quot; alt=&quot;Early iteration of system flowchart&quot; /&gt;
-&lt;img src=&quot;/assets/early_struct.png&quot; alt=&quot;Early iteration of system structure chart&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I worked on further system modelling, including the structure chart and system flowchart.</summary></entry><entry><title type="html">This Week in tbrpggepp #5</title><link href="http://localhost:4000/2020/02/07/n5.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #5" /><published>2020-02-07T00:00:00+11:00</published><updated>2020-02-07T00:00:00+11:00</updated><id>http://localhost:4000/2020/02/07/n5</id><content type="html" xml:base="http://localhost:4000/2020/02/07/n5.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;This week I revised and worked on system modelling including context diagrams and the data flow diagram for the desktop application.&lt;/p&gt;
-
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;I didn’t encounter any issues this week, it was pretty smooth sailing.&lt;/p&gt;
-
-&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
-&lt;p&gt;I revised in-class and and off the preliminary textbook the graphical system modelling tools like context diagrams and data flow diagrams, which seem like more simplistic versions of non-deterministic finite state automata. I was pleased to find out Dia ran natively on my GNU/Linux machine, and was even more pleased to find out that Dia itself is a part of the GNU project! It turns out Dia is Free Software (in the sense of freedom, not price) and is licensed under version 3 or later of the GPL.&lt;/p&gt;
-
-&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
-&lt;p&gt;While working out the system modelling tools I decided the application should have a definitive ‘save’ feature which would do more than write a JSON file to disk. This could be a commit to a local git repository but I’m undecided. I have also decided to integrate the game-playing command line application with the game-designing desktop application, which will run in another form. These are all shown as processes in the data flow diagram.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/context.png&quot; alt=&quot;Context Diagram&quot; /&gt;
-&lt;img src=&quot;/assets/dfd.png&quot; alt=&quot;DFD Diagram&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: This week I revised and worked on system modelling including context diagrams and the data flow diagram for the desktop application.</summary></entry><entry><title type="html">This Week in tbrpggepp #4</title><link href="http://localhost:4000/2020/01/31/n4.html" rel="alternate" type="text/html" title="This Week in tbrpggepp #4" /><published>2020-01-31T00:00:00+11:00</published><updated>2020-01-31T00:00:00+11:00</updated><id>http://localhost:4000/2020/01/31/n4</id><content type="html" xml:base="http://localhost:4000/2020/01/31/n4.html">&lt;h2 id=&quot;progress&quot;&gt;Progress:&lt;/h2&gt;
-&lt;p&gt;Similarly to the last update, this week was on the border of a term and having school start on a Wednesday means relatively little progress was made. The progress I did make was a rough start on the IPO chart.&lt;/p&gt;
-
-&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
-&lt;p&gt;It’s somewhat difficult to make an IPO chart for an application you haven’t developed yet, but I’ve attempted to imagine the inputs the user would make and how the application would respond in the general sense. I feel that I won’t know exactly what the inputs and processes are until I’ve completed developing the application, however I’m going to have to work through this as the documentation is due before the code.&lt;/p&gt;
-
-&lt;h2 id=&quot;learning&quot;&gt;Learning&lt;/h2&gt;
-&lt;p&gt;Over the holidays I came across a great source of programming/IT PDFs and ebooks, so this week I’ve been reading through “Rapid GUI Programming with Python and Qt” by Mark Summerfield this week. At the start of the project I wasn’t aware of PyQt, a Python 2/3 binding of Qt that would allow me to develop the application without having to learn C++, only costing a minor hit to performance. I know that one of my favourite desktop applications, Qutebrowser, is written in PyQt.&lt;/p&gt;
-
-&lt;h2 id=&quot;refinements&quot;&gt;Refinements&lt;/h2&gt;
-&lt;p&gt;I might decide to implement the project with Python3 and PyQt rather than C++ and bare Qt.&lt;/p&gt;
-
-&lt;h2 id=&quot;screenshots&quot;&gt;Screenshots&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/ipo.png&quot; alt=&quot;IPO chart mockup&quot; /&gt;
-&lt;img src=&quot;/assets/pyqt_book.png&quot; alt=&quot;A Page from the PyQt Programming Book&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: Similarly to the last update, this week was on the border of a term and having school start on a Wednesday means relatively little progress was made. The progress I did make was a rough start on the IPO chart.</summary></entry></feed>
+&lt;img src=&quot;/assets/githubio.png&quot; alt=&quot;Blog post site&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Progress: School shut down last week due to Covid-19 and didn’t begin online lessons until this week. I feel as if were I in any stage of my schooling life this would be a great joy, but the fact I’m doing my HSC this year leaves me with some quite mixed feelings. Nevertheless, this was the week of submission for the Planning and Designing component of the major task, and of course brought with it a mad rush. During the last two weeks I managed to: Update my Context Diagram Update my Data Flow Diagram Expand significantly upon my Data Dictionary Create my UI design mockups and the Storyboard connecting them Expand significantly upon my IPO Chart Refined my problem statement Wrote the section on development approach Wrote the section on System Documentation justification Expand significantly upon my social and ethical issues discussion Manage to publish a few of my blogs.</summary></entry></feed>
